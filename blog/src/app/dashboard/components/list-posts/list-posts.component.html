@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="w-100">
+        <h2>Todos os Artigos</h2>
+    </div>
+    <div class="w-100 d-flex justify-content-end pb-2">
+        <button class="btn btn-primary" routerLink="/dashboard/new-article"><i class="bi bi-clipboard2-plus"></i> Criar Artigo</button>
+    </div>
+
+    <div class="content-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Criação</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let article of listArticles; let i = index">
+            <th scope="row">#{{ i + 1 }}</th>
+            <td>{{article.title || 'Não Possui'}}</td>
+            <td>{{(article.createdAt | date:'short') || 'Não Possui'}}</td>
+            <td>
+                <button [routerLink]='["/dashboard/edit-post", article.id]' class="btn btn-success mr-5"><i class="bi bi-pen"></i> Update</button>
+                <button (click)="deleteArticleModal(article.id)" class="btn btn-danger"><i class="bi bi-file-earmark-x"></i> Delete</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+   
+    <div class="w-100 d-flex flex-column justify-content-end pb-2" *ngIf="listArticles.length == 0">
+      <p>Ainda não possui artigos</p>
+      <button class="btn btn-primary" routerLink="/dashboard/new-article"><i class="bi bi-clipboard2-plus"></i> Criar Artigo</button>
+    </div>
+</div>
