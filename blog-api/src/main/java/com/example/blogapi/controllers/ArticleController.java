@@ -3,6 +3,8 @@ package com.example.blogapi.controllers;
 import com.example.blogapi.entities.Article;
 import com.example.blogapi.entities.ArticleRepository;
 import com.example.blogapi.utils.ResourceNotFoundException;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,13 +29,12 @@ public class ArticleController {
     }
 
     @PostMapping
-    @RequestMapping
-    public @ResponseBody Article createArticle(@RequestBody Article article) {
+    public @ResponseBody Article createArticle(@Valid @RequestBody Article article) {
         return articleRepository.save(article);
     }
 
     @PutMapping(path = "/{id}")
-    public Article updateArticle(@PathVariable long id, @RequestBody Article articleUpdate) {
+    public Article updateArticle(@PathVariable long id,@Valid @RequestBody Article articleUpdate) {
         return articleRepository.findById(Math.toIntExact(id))
                 .map(article -> {
                     articleUpdate.setId(article.getId());
