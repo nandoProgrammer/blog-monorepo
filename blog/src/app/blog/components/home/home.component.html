@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div *ngIf="listArticles.length == 0" class="col-md-12">
             <h6>Ainda não possui artigos...</h6>
         </div>
     </div>

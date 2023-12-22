@@ -5,6 +5,10 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { UrlInterceptor } from './core/interceptors/urlInterceptor';
 
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+registerLocaleData(localePT);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
