@@ -1,0 +1,17 @@
+.content-dashboard {
+    width: 100%;
+    position: relative;
+}
+
+.wrapper-dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+aside {
+    width: 20%;
+    border-right: 1px solid #cecece;
+    ul {
+        margin-top: 5rem;
+    }
+}
